@@ -12,7 +12,7 @@ pipeline {
         stage('Deploy a container') {
             steps {
                 sh '''
-                    sudo docker run -d -p 80:80 --name demo_webserver httpd:latest
+                    sudo docker run -d -p 80:80 --name demo_webserver demo1:latest
                 '''
             }
         }
