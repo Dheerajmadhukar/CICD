@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/demo1
-                git pull
+                git pull --rebase origin main
                 '''
             }
         }
