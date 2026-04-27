@@ -2,6 +2,23 @@ pipeline {
     agent any
 
     stages {
+        stage('Update the repo') {
+            steps {
+                sh '''
+                cd /var/lib/jenkins/workspace/demo1
+                git pull
+                '''
+            }
+        }
+        stage('Stop & Remove Previous Container & image') {
+            steps {
+                sh '''
+                sudo docker stop demo_webserver || true
+                sudo docker rm -f demo_webserver || true
+                sudo docker rmi -f demo1:latest || true
+                '''
+            }
+        } 
         stage('Build the docker image') {
             steps {
                 sh '''
